@@ -22,5 +22,5 @@ forecast = m.predict(future)
 cols = {'ds': 'date', 'yhat': 'peak_load(MW)'}
 forecast = forecast[forecast['ds'].between('2019-04-02', '2019-04-08')].rename(columns=cols)[cols.values()]
 forecast['date'] = forecast['date'].apply(lambda x: x.strftime('%Y%m%d'))
-forecast['peak_load(MW)'] = forecast['peak_load(MW)'].apply(lambda x: round(x))
+forecast['peak_load(MW)'] = forecast['peak_load(MW)'].apply(round)
 forecast.to_csv('submission.csv', index=False)
